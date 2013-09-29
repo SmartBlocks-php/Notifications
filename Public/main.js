@@ -9,17 +9,17 @@ define([
             var base = this;
             //Notification center initialization
             SmartBlocks.basics.show_message = base.methods.notify;
-            alert("hey");
+            base.methods.alert("This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message This is a message ");
         },
         methods:{
             notify: function (message) {
                 alert(message);
             },
-            alert: function (message) {
+            alert: function (message, title) {
                 var base = this;
                 var alert_view = new AlertView();
                 $("body").prepend(alert_view.$el);
-                alert_view.init(message);
+                alert_view.init(message, title);
             },
             confirm: function (message) {
 

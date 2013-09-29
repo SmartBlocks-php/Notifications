@@ -14,6 +14,7 @@ define([
             var base = this;
             base.message = message;
             base.render();
+            base.registerEvents();
         },
         render: function () {
             var base = this;

@@ -1,7 +1,16 @@
 {
     "name": "Notifications",
     "token": "notifications",
+    "main":"Notifications/main",
     "types": [
+        {
+            "model_name": "Notification",
+            "collection_name": "Notifications",
+            "plural": "notifications",
+            "ws_origin": "/Notifications/Notifications",
+            "model_location": "Notifications/apps/Models/Notification",
+            "collection_location": "Notifications/apps/Collections/Notifications"
+        }
     ],
     "apps": [
     ]

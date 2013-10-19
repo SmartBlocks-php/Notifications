@@ -12,10 +12,11 @@ define([
             base.notification = notification;
             base.model = notification;
         },
-        init: function (callback) {
+        init: function (callback, callbacks) {
             var base = this;
             base.callback = callback;
             base.show_continue = callback !== undefined;
+            base.callbacks = callbacks;
             base.render();
             base.registerEvents();
         },
@@ -55,6 +56,26 @@ define([
                     base.$el.remove();
                 }, 5000);
             }
+
+            base.$el.delegate(".ok_button", "click", function () {
+                if (base.callbacks && base.callbacks.ok) {
+                    base.callbacks.ok();
+                }
+                base.$el.remove();
+            });
+
+            base.$el.delegate(".ignore_button", "click", function () {
+                if (base.callbacks && base.callbacks.ignore) {
+                    base.callbacks.ignore();
+                }
+                base.$el.remove();
+            });
+
+            base.$el.delegate(".remind_me_button", "click", function () {
+                if (base.callbacks && base.callbacks.ok) {
+                    base.callbacks.remind_me();
+                }
+            });
         }
     });
 

@@ -2,6 +2,7 @@
     "name": "Notifications",
     "token": "notifications",
     "main":"Notifications/main",
+    "restricted_to":"user",
     "types": [
         {
             "model_name": "Notification",

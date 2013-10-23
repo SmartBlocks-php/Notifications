@@ -58,6 +58,7 @@ define([
             }
 
             base.$el.delegate(".ok_button", "click", function () {
+
                 if (base.callbacks && base.callbacks.ok) {
                     base.callbacks.ok();
                 }

@@ -10,11 +10,12 @@ define([
         initialize: function () {
             var base = this;
         },
-        init: function (title, content, callbacks) {
+        init: function (title, content, callbacks, tag) {
             var base = this;
             base.callbacks = callbacks;
             base.title = title;
             base.content = content;
+            base.tag = tag;
 
             base.render();
             base.registerEvents();
@@ -32,6 +33,7 @@ define([
             var base = this;
 
             base.$el.delegate(".ok_button", "click", function () {
+                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
                 if (base.callbacks && base.callbacks.ok) {
                     base.callbacks.ok();
                 }
@@ -39,6 +41,7 @@ define([
             });
 
             base.$el.delegate(".ignore_button", "click", function () {
+                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
                 if (base.callbacks && base.callbacks.ignore) {
                     base.callbacks.ignore();
                 }
@@ -46,6 +49,7 @@ define([
             });
 
             base.$el.delegate(".remind_me_button", "click", function () {
+                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
                 if (base.callbacks && base.callbacks.remind_me) {
                     base.callbacks.remind_me();
                 }

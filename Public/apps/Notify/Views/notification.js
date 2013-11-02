@@ -29,32 +29,43 @@ define([
             });
             base.$el.html(template);
         },
+        addButton: function (content, callback) {
+            var base = this;
+            var button = $(document.createElement('a'));
+            button.addClass('pure-button');
+            button.html(content);
+            base.$el.find('.buttons_container').append(button);
+            button.click(function () {
+                callback();
+                base.$el.remove();
+            });
+        },
         registerEvents: function () {
             var base = this;
 
-            base.$el.delegate(".ok_button", "click", function () {
-                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
-                if (base.callbacks && base.callbacks.ok) {
-                    base.callbacks.ok();
-                }
-                base.$el.remove();
-            });
-
-            base.$el.delegate(".ignore_button", "click", function () {
-                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
-                if (base.callbacks && base.callbacks.ignore) {
-                    base.callbacks.ignore();
-                }
-                base.$el.remove();
-            });
-
-            base.$el.delegate(".remind_me_button", "click", function () {
-                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
-                if (base.callbacks && base.callbacks.remind_me) {
-                    base.callbacks.remind_me();
-                }
-                base.$el.remove();
-            });
+//            base.$el.delegate(".ok_button", "click", function () {
+//                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
+//                if (base.callbacks && base.callbacks.ok) {
+//                    base.callbacks.ok();
+//                }
+//                base.$el.remove();
+//            });
+//
+//            base.$el.delegate(".ignore_button", "click", function () {
+//                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
+//                if (base.callbacks && base.callbacks.ignore) {
+//                    base.callbacks.ignore();
+//                }
+//                base.$el.remove();
+//            });
+//
+//            base.$el.delegate(".remind_me_button", "click", function () {
+//                SmartBlocks.Blocks.Notifications.Main.notified[base.tag] = false;
+//                if (base.callbacks && base.callbacks.remind_me) {
+//                    base.callbacks.remind_me();
+//                }
+//                base.$el.remove();
+//            });
 
         }
     });

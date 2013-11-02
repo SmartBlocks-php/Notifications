@@ -29,6 +29,15 @@ define([
                 notification_container.append(notification_view.$el);
                 notification_view.init(title, content, callbacks, tag);
 
+                for (var k in callbacks) {
+                    (function (callback) {
+                        notification_view.addButton(k, function () {
+                            callback();
+                        });
+                    })(callbacks[k]);
+
+                }
+
                 SmartBlocks.Blocks.Notifications.Main.notified[tag] = true;
             }
         },
